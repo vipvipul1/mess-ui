@@ -1,0 +1,29 @@
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+      <div class="card px-5 py-5">
+        <div class="text-center logo">Tapan Da Mess</div>
+        <form #loginForm="ngForm" (ngSubmit)="handleLogin()">
+          <div class="form-input">
+            <i class="fa fa-user"></i>
+            <input type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Username" required/>
+          </div>
+          <div class="form-input">
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" required/>
+          </div>
+          <div class="errorMsg">
+            <span *ngIf="invalidLogin"><i class="fa fa-exclamation-triangle"></i> {{errorMessage}}</span>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary mt-4 signup" [disabled]="loginForm.invalid">Login</button>
+          </div>
+        </form>
+        <div class="text-center mt-4">
+          <span>Not a member?</span>&nbsp;
+          <a routerLink="/register" class="text-decoration-none"><i>Register</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

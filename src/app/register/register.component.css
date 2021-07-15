@@ -1,0 +1,63 @@
+body {
+  background-color: #535fe6;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+.height {
+  height: 100vh;
+}
+
+.card {
+  border: none;
+  background-color: #d8d5cf;
+  color: #000;
+  width: 718px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-input {
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+.form-input i {
+  position: absolute;
+  font-size: 18px;
+  top: 15px;
+  left: 10px;
+}
+
+.form-control {
+  height: 50px;
+  text-indent: 24px;
+  font-size: 15px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  color: black;
+  border-color: #4f63e7;
+}
+
+.signup {
+  height: 50px;
+  font-size: 14px;
+  width: 100px;
+}
+
+.logo{
+  font-size: 31px;
+  font-family: cursive;
+  font-weight: 800;
+  color: #9215a9;
+  padding-bottom: 25px;
+}
+
+a {
+  cursor: pointer;
+}

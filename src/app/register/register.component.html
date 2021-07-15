@@ -1,0 +1,72 @@
+<div class="container mt-5 mb-5">
+  <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-8">
+          <div class="card px-5 py-5">
+            <div class="text-center logo">Tapan Da Mess</div>
+            <form #registerForm="ngForm" (ngSubmit)="registerUser()">
+              <div class="input-group">
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-user"></i>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="user.name" placeholder="Full Name" required/>
+                  </div>
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-envelope"></i>
+                    <input type="text" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email address" required/>
+                  </div>
+              </div>
+              <div class="input-group">
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-user"></i>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="Username" required/>
+                  </div>
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-lock"></i>
+                    <input type="text" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password" required/>
+                  </div>
+              </div>
+              <div class="input-group">
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-phone-square"></i>
+                    <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" placeholder="Phone" required/>
+                  </div>
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-address-card"></i>
+                    <input type="text" class="form-control" name="address" [(ngModel)]="user.address" placeholder="Address" required/>
+                  </div>
+              </div>
+              <div class="input-group">
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-graduation-cap"></i>
+                    <input type="text" class="form-control" name="branch" [(ngModel)]="user.branch" placeholder="Branch" required/>
+                  </div>
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-birthday-cake"></i>
+                    <input type="date" class="form-control" name="dob" [(ngModel)]="user.dob" placeholder="DOB" required/>
+                  </div>
+              </div>
+              <div class="input-group">
+                  <div class="form-input col-md-6">
+                    <i class="fa fa-id-badge"></i>
+                    <input type="text" class="form-control" name="studentId" [(ngModel)]="user.studentId" placeholder="Student Id" required/>
+                  </div>
+                  <div class="form-input col-md-6" style="top: 12px; left: 3px;">
+                    <a (click)="user.isVeg=true">
+                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="true" placeholder="Phone" /> Veg
+                    </a> &nbsp;&nbsp;&nbsp;
+                    <a (click)="user.isVeg=false">
+                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="false" placeholder="Phone" /> Non-veg
+                    </a>
+                  </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-4 signup" [disabled]="registerForm.invalid">Register</button>
+              </div>
+              <div class="text-center mt-4">
+                  <span>Already a member?</span>&nbsp;
+                  <a routerLink="/login" class="text-decoration-none"><i>Login</i></a>
+              </div>
+            </form>
+          </div>
+      </div>
+  </div>
+</div>
