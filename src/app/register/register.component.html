@@ -17,7 +17,7 @@
                   <div class="form-input col-md-6">
                     <i class="fa fa-envelope"></i>
                     <input type="text" class="form-control" name="email" [(ngModel)]="user.email"
-                      (change)="emailErr = validateRegDetails(user.email)" placeholder="Email address" required/>
+                      (change)="validateRegDetails(user.email, 'email')" placeholder="Email address" required/>
                     <span id="userError" *ngIf="emailErr">Email already Taken !! Try another.</span>
                   </div>
               </div>
@@ -25,7 +25,7 @@
                   <div class="form-input col-md-6">
                     <i class="fa fa-user"></i>
                     <input type="text" class="form-control" name="username" [(ngModel)]="user.username"
-                      (change)="usernameErr = validateRegDetails(user.username)" placeholder="Username" required/>
+                      (change)="validateRegDetails(user.username, 'username')" placeholder="Username" required/>
                     <span id="userError" *ngIf="usernameErr">Username already Taken !! Try another.</span>
                   </div>
                   <div class="form-input col-md-6">
@@ -33,11 +33,11 @@
                     <input type="text" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password" required/>
                   </div>
               </div>
-              <!-- <div class="input-group">
+              <div class="input-group">
                   <div class="form-input col-md-6">
                     <i class="fa fa-phone-square"></i>
                     <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone"
-                      (change)="phoneErr = validateRegDetails(user.phone)" placeholder="Phone" required/>
+                      (change)="validateRegDetails(user.phone, 'phone')" placeholder="Phone" required/>
                     <span id="userError" *ngIf="phoneErr">Phone already Taken !! Try another.</span>
                   </div>
                   <div class="form-input col-md-6">
@@ -59,7 +59,7 @@
                   <div class="form-input col-md-6">
                     <i class="fa fa-id-badge"></i>
                     <input type="text" class="form-control" name="studentId" [(ngModel)]="user.studentId"
-                      (change)="studentIdErr = validateRegDetails(user.studentId)" placeholder="Student Id" required/>
+                      (change)="validateRegDetails(user.studentId, 'studentId')" placeholder="Student Id" required/>
                     <span id="userError" *ngIf="studentIdErr">Mar Khaoge !! Shi dalo.</span>
                   </div>
                   <div class="form-input col-md-6" style="top: 12px; left: 3px;">
@@ -77,7 +77,7 @@
               <div class="text-center mt-4">
                   <span>Already a member?</span>&nbsp;
                   <a routerLink="/login" class="text-decoration-none"><i>Login</i></a>
-              </div> -->
+              </div>
             </form>
           </div>
       </div>

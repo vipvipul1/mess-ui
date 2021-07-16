@@ -26,15 +26,27 @@ export class RegisterComponent implements OnInit {
     this.user.isVeg = false;
   }
 
-  validateRegDetails(userDetail) {
+  validateRegDetails(userDetail, field) {
     this.userRegister.validateRegDetails(userDetail).subscribe(
       (res) => {
-        return res;
+        this.errorMsg = '';
+        this.assignDynamicFieldErr(field, res);
       }, (err) => {
         this.errorMsg = err.error.friendlyMessage;
-        return true;
+        this.assignDynamicFieldErr(field, true);
       }
     );
+  }
+
+  assignDynamicFieldErr(field, response) {
+    if (field == 'email')
+      this.emailErr = response;
+    else if (field == 'username')
+      this.usernameErr = response;
+    else if (field == 'phone')
+      this.phoneErr = response;
+    else if (field == 'studentId')
+      this.studentIdErr = response;
   }
 
   registerUser() {
