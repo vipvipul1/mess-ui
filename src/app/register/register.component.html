@@ -1,6 +1,11 @@
 <div class="container mt-5 mb-5">
   <div class="row d-flex align-items-center justify-content-center">
       <div class="col-md-8">
+          <div *ngIf="errorMsg != '' || successMsg != ''" class="alert alert-dismissible fade show col-md-6"
+              [ngClass]="{'alert-danger': errorMsg!='','alert-success': successMsg!=''}" role="alert">
+            <i class="fa fa-check-circle"></i>
+            {{errorMsg}}{{successMsg}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
           <div class="card px-5 py-5">
             <div class="text-center logo">Tapan Da Mess</div>
             <form #registerForm="ngForm" (ngSubmit)="registerUser()">
@@ -11,13 +16,17 @@
                   </div>
                   <div class="form-input col-md-6">
                     <i class="fa fa-envelope"></i>
-                    <input type="text" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email address" required/>
+                    <input type="text" class="form-control" name="email" [(ngModel)]="user.email"
+                      (change)="validateRegDetails(user.email, 'email')" placeholder="Email address" required/>
+                    <span id="userError" *ngIf="emailErr">Email already Taken !! Try another.</span>
                   </div>
               </div>
               <div class="input-group">
                   <div class="form-input col-md-6">
                     <i class="fa fa-user"></i>
-                    <input type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="Username" required/>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="user.username"
+                      (change)="validateRegDetails(user.username, 'username')" placeholder="Username" required/>
+                    <span id="userError" *ngIf="usernameErr">Username already Taken !! Try another.</span>
                   </div>
                   <div class="form-input col-md-6">
                     <i class="fa fa-lock"></i>
@@ -27,7 +36,9 @@
               <div class="input-group">
                   <div class="form-input col-md-6">
                     <i class="fa fa-phone-square"></i>
-                    <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" placeholder="Phone" required/>
+                    <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone"
+                      (change)="validateRegDetails(user.phone, 'phone')" placeholder="Phone" required/>
+                    <span id="userError" *ngIf="phoneErr">Phone already Taken !! Try another.</span>
                   </div>
                   <div class="form-input col-md-6">
                     <i class="fa fa-address-card"></i>
@@ -47,14 +58,16 @@
               <div class="input-group">
                   <div class="form-input col-md-6">
                     <i class="fa fa-id-badge"></i>
-                    <input type="text" class="form-control" name="studentId" [(ngModel)]="user.studentId" placeholder="Student Id" required/>
+                    <input type="text" class="form-control" name="studentId" [(ngModel)]="user.studentId"
+                      (change)="validateRegDetails(user.studentId, 'studentId')" placeholder="Student Id" required/>
+                    <span id="userError" *ngIf="studentIdErr">Mar Khaoge !! Shi dalo.</span>
                   </div>
                   <div class="form-input col-md-6" style="top: 12px; left: 3px;">
                     <a (click)="user.isVeg=true">
-                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="true" placeholder="Phone" /> Veg
+                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="true" /> Veg
                     </a> &nbsp;&nbsp;&nbsp;
                     <a (click)="user.isVeg=false">
-                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="false" placeholder="Phone" /> Non-veg
+                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="false" /> Non-veg
                     </a>
                   </div>
               </div>

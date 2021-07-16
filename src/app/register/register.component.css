@@ -61,3 +61,21 @@ body {
 a {
   cursor: pointer;
 }
+
+.alert {
+  padding: 5px;
+  position: absolute;
+  top: 51px;
+  width: 53%;
+  font-size: 14px;
+}
+
+.alert button {
+  padding: 8px;
+}
+
+#userError {
+  font-size: 14px;
+  color: red;
+  font-style: italic;
+}
