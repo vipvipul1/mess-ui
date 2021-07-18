@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../app-model/user.model';
 import { SimpleAuthenticationService } from '../app-service/authentication/simple-authentication.service';
 
 @Component({
@@ -25,11 +26,11 @@ export class LoginComponent implements OnInit {
   handleLogin() {
     this.simpleAuthenticationService.checkAuthCredentials(this.username, this.password)
       .subscribe(
-        data => {
-          if (data == true) {
+        (data: User) => {
+          if (data != null) {
             this.invalidLogin = false;
             this.errorMessage = '';
-            this.router.navigate(['homepage', this.username]);
+            this.router.navigate(['homepage', data.name]);
           } else {
             this.invalidLogin = true;
             this.errorMessage = 'Invalid Credentials !!';

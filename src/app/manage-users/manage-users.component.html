@@ -1,0 +1,43 @@
+<div class="container pt-5">
+  <div class="tableFixHead">
+    <!-- <div *ngIf="errorMsg != '' || successMsg != ''" class="alert alert-dismissible fade show col-md-6"
+        [ngClass]="{'alert-danger': errorMsg != '','alert-success': successMsg != ''}" role="alert">
+      <i class="fa fa-check-circle" *ngIf="successMsg != ''"></i>
+      <i class="fa fa-times-circle" *ngIf="errorMsg != ''"></i>
+      {{errorMsg}}{{successMsg}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div> -->
+    <table class="table table-striped table-responsive">
+      <thead class="table-light">
+        <tr>
+          <th>S. No.</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Student Id</th>
+          <th>Non-Veg</th>
+          <th>New</th>
+          <th>Disabled</th>
+          <th>Grant/Revoke Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.studentId }}</td>
+          <td>{{ user.isVeg == true ? "No" : "Yes" }}</td>
+          <td>{{ user.isNew == true ? "Yes" : "No" }}</td>
+          <td>{{ user.isDisabled == true ? "Yes" : "No" }}</td>
+          <td>
+            <button class="btn btn-success" style="width: 76px;"
+              *ngIf="user.isDisabled" (click) = "grantOrRevokeAccess(user.userId, 'Grant')" >Grant</button>
+            <button class="btn btn-danger"
+              *ngIf="!user.isDisabled" (click) = "grantOrRevokeAccess(user.userId, 'Revoke')">Revoke</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

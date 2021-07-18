@@ -15,7 +15,7 @@ export class LoginRouteGuardService {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const loginStatus = this.simpleAuthenticationService.isUserLoggedIn();
     if (loginStatus == true) {
-      this.router.navigate(['homepage', this.simpleAuthenticationService.getAuthenticatedUser()]);
+      this.router.navigate(['homepage', this.simpleAuthenticationService.getAuthenticatedFullname()]);
       return false;
     }
     return true;
