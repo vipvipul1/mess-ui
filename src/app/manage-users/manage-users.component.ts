@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { ToastrService } from 'ngx-toastr';
 import { User } from '../app-model/user.model';
 import { ManageUsersService } from '../app-service/manage/manage-users.service';
+import { ToasterService } from '../app-service/toaster.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -14,7 +14,7 @@ export class ManageUsersComponent implements OnInit {
 
   constructor(
     private manageUsers: ManageUsersService,
-    // private toastr: ToastrService
+    private toasterService: ToasterService
   ) { }
 
   ngOnInit() {
@@ -30,22 +30,18 @@ export class ManageUsersComponent implements OnInit {
   }
 
   grantOrRevokeAccess(userId, action) {
-    // this.toastr.success('Updated Successfully!', 'Grant Update');
-    // this.manageUsers.grantOrRevokeAccess(userId, action).subscribe(
-    //   data => {
-    //     if (data == true) {
-    //       this.successMsg = 'Updated Successfully!';
-    //       this.errorMsg = '';
-    //     } else {
-    //       this.errorMsg = 'Action failed! Please perform correct operation or try again later.';
-    //       this.successMsg = '';
-    //     }
-    //     this.getAllUserDetails();
-    //   }, error => {
-    //     this.errorMsg = error.friendlyMessage;
-    //     this.successMsg = '';
-    //   }
-    // );
+    this.manageUsers.grantOrRevokeAccess(userId, action).subscribe(
+      data => {
+        if (data == true) {
+          this.toasterService.showSuccess('Updated Successfully!', 'Success');
+        } else {
+          this.toasterService.showError('Action failed! Please perform correct operation or try again later.', 'Error');
+        }
+        this.getAllUserDetails();
+      }, err => {
+        this.toasterService.showError(err.error.friendlyMessage, 'Error');
+      }
+    );
   }
 
 }
