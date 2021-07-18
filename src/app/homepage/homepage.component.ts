@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SimpleAuthenticationService } from '../app-service/authentication/simple-authentication.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  fullName: string;
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+
+    this.fullName = this.route.snapshot.params['fullName'];
   }
 
 }

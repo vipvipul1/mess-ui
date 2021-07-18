@@ -2,8 +2,9 @@
   <div class="row d-flex align-items-center justify-content-center">
       <div class="col-md-8">
           <div *ngIf="errorMsg != '' || successMsg != ''" class="alert alert-dismissible fade show col-md-6"
-              [ngClass]="{'alert-danger': errorMsg!='','alert-success': successMsg!=''}" role="alert">
-            <i class="fa fa-check-circle"></i>
+              [ngClass]="{'alert-danger': errorMsg != '','alert-success': successMsg != ''}" role="alert">
+            <i class="fa fa-check-circle" *ngIf="successMsg != ''"></i>
+            <i class="fa fa-times-circle" *ngIf="errorMsg != ''"></i>
             {{errorMsg}}{{successMsg}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <div class="card px-5 py-5">

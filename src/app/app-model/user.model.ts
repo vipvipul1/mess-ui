@@ -11,9 +11,11 @@ export class User {
   public dob: Date;
   public studentId: string;
   public roleId: number;
+  public isVeg: boolean;
   public isActive: boolean;
   public isDisabled: boolean;
-  public isVeg: boolean;
+  public isNew: boolean;
+  public regDate: Date;
 
   constructor(
   ) { }

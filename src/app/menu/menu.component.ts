@@ -8,14 +8,14 @@ import { SimpleAuthenticationService } from '../app-service/authentication/simpl
 })
 export class MenuComponent implements OnInit, AfterContentChecked{
 
-  username = '';
+  fullName = '';
 
   constructor(
     public simpleAuthenticationService: SimpleAuthenticationService
   ) { }
 
   ngAfterContentChecked(): void {
-    this.username = this.simpleAuthenticationService.getAuthenticatedUser();
+    this.fullName = this.simpleAuthenticationService.getAuthenticatedFullname();
   }
 
   ngOnInit() {

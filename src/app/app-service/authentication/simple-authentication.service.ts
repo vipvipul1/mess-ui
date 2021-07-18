@@ -3,23 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { API_URL } from 'src/app/app.constants';
+import { User } from 'src/app/app-model/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SimpleAuthenticationService {
 
+  private user = new User();
+
   constructor(
     private http: HttpClient
   ) { }
 
   checkAuthCredentials(username, password) {
-    return this.http.post(`${API_URL}/mess/login/user`, {'username': username, 'password': password})
+    return this.http.post(`${API_URL}/mess/login/user`, { 'username': username, 'password': password })
       .pipe(
         map(
-          data => {
-            if (data == true) {
-              sessionStorage.setItem('username', username);
+          (data: User) => {
+            if (data != null) {
+              sessionStorage.setItem('username', data.username);
+              this.user = data;
               return data;
             }
             return data;
@@ -27,12 +31,16 @@ export class SimpleAuthenticationService {
       );
   }
 
-  getAuthenticatedUser() {
+  getAuthenticatedUsername() {
     return sessionStorage.getItem('username');
   }
 
+  getAuthenticatedFullname() {
+    return this.user.name;
+  }
+
   isUserLoggedIn() {
-    if (this.getAuthenticatedUser()) {
+    if (this.getAuthenticatedUsername()) {
       return true;
     }
     return false;
@@ -40,6 +48,7 @@ export class SimpleAuthenticationService {
 
   logout() {
     sessionStorage.removeItem('username');
+    this.user = new User();
   }
 
 }
