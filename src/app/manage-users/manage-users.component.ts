@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { User } from '../app-model/user.model';
 import { ManageUsersService } from '../app-service/manage/manage-users.service';
 
@@ -14,7 +14,7 @@ export class ManageUsersComponent implements OnInit {
 
   constructor(
     private manageUsers: ManageUsersService,
-    private toastr: ToastrService
+    // private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   grantOrRevokeAccess(userId, action) {
-    this.toastr.success('Updated Successfully!', 'Grant Update');
+    // this.toastr.success('Updated Successfully!', 'Grant Update');
     // this.manageUsers.grantOrRevokeAccess(userId, action).subscribe(
     //   data => {
     //     if (data == true) {
