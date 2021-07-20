@@ -1,38 +1,38 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #d0ebff;">
     <div style="margin-left: 3px; font-family: cursive;">
       <a [routerLink]="['/homepage', fullName != null ? fullName : '']" class="navbar-brand">Tapan Da Mess</a>
     </div>
 
     <ul class="navbar-nav" *ngIf="simpleAuthenticationService.isUserLoggedIn()">
-      <li class="nav-item px-1 active">
+      <li class="nav-item px-1" routerLinkActive="active">
 		 	  <a [routerLink]="['/homepage', fullName]" class="nav-link">Home</a>
 		  </li>
-      <li class="nav-item px-1">
+      <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/messExpense" class="nav-link">Monthly Expense</a>
       </li>
-      <li class="nav-item px-1">
+      <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/monthlyMeal" class="nav-link">Monthly Meals</a>
       </li>
-      <li class="nav-item px-1">
+      <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/editMeal" class="nav-link">Edit Meals</a>
       </li>
-      <li class="nav-item px-1">
+      <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/messDeposit" class="nav-link">Mess Deposit</a>
       </li>
-      <li class="nav-item px-1">
+      <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/messReport" class="nav-link">Mess Report</a>
       </li>
-      <li class="nav-item px-1">
+      <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/manageUsers" class="nav-link">Manage Users</a>
       </li>
     </ul>
 
     <ul *ngIf="simpleAuthenticationService.isUserLoggedIn()" class="navbar-nav navbar-collapse justify-content-end">
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
 			  <a routerLink="/profile" class="nav-link">Profile</a>
 		  </li>
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
 			  <a routerLink="/logout" class="nav-link">Logout</a>
 		  </li>
     </ul>

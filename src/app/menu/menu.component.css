@@ -1,3 +1,9 @@
 nav {
   height: 46px;
 }
+
+.nav-item.active {
+  color: green;
+  font-weight: 600;
+  font-size: 1rem;
+}

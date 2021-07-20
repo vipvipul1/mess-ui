@@ -13,10 +13,18 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   {path: '', component: LoginComponent, canActivate: [LoginRouteGuardService]},
   {path: 'login', component: LoginComponent, canActivate: [LoginRouteGuardService]},
-  {path: 'homepage/:fullName', component: HomepageComponent, canActivate: [RouteGuardService]},
-  {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: 'register', component: RegisterComponent, canActivate: [LoginRouteGuardService]},
-  {path: 'manageUsers', component: ManageUsersComponent, canActivate: [RouteGuardService]}
+
+  {path: 'homepage/:fullName', component: HomepageComponent, canActivate: [RouteGuardService]},
+  {path: 'messExpense', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'monthlyMeal', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'editMeal', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'messDeposit', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'messReport', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'manageUsers', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+
+  {path: 'profile', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]}
 ];
 
 @NgModule({

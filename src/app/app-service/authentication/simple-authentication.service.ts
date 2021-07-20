@@ -10,8 +10,6 @@ import { User } from 'src/app/app-model/user.model';
 })
 export class SimpleAuthenticationService {
 
-  private user = new User();
-
   constructor(
     private http: HttpClient
   ) { }
@@ -22,8 +20,7 @@ export class SimpleAuthenticationService {
         map(
           (data: User) => {
             if (data != null) {
-              sessionStorage.setItem('username', data.username);
-              this.user = data;
+              sessionStorage.setItem('user', JSON.stringify(data));
               return data;
             }
             return data;
@@ -32,11 +29,13 @@ export class SimpleAuthenticationService {
   }
 
   getAuthenticatedUsername() {
-    return sessionStorage.getItem('username');
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    return user != null ? user.username : null;
   }
 
   getAuthenticatedFullname() {
-    return this.user.name;
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    return user != null ? user.name : null;
   }
 
   isUserLoggedIn() {
@@ -47,8 +46,7 @@ export class SimpleAuthenticationService {
   }
 
   logout() {
-    sessionStorage.removeItem('username');
-    this.user = new User();
+    sessionStorage.removeItem('user');
   }
 
 }
