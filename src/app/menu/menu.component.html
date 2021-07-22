@@ -1,12 +1,12 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light" style="background-color: #d0ebff;">
     <div style="margin-left: 3px; font-family: cursive;">
-      <a [routerLink]="['/homepage', fullName != null ? fullName : '']" class="navbar-brand">Tapan Da Mess</a>
+      <a [routerLink]="['/homepage', (fullName | async) != null ? (fullName | async) : '']" class="navbar-brand">Tapan Da Mess</a>
     </div>
 
     <ul class="navbar-nav" *ngIf="loginStatus | async">
       <li class="nav-item px-1" routerLinkActive="active">
-		 	  <a [routerLink]="['/homepage', fullName]" class="nav-link">Home</a>
+		 	  <a [routerLink]="['/homepage', (fullName | async)]" class="nav-link">Home</a>
 		  </li>
       <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/messExpense" class="nav-link">Monthly Expense</a>

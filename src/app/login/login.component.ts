@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
           if (data != null) {
             this.invalidLogin = false;
             this.errorMessage = '';
-            this.router.navigate(['homepage', data.name]);
+            this.router.navigate(['homepage', data.fullName]);
           } else {
             this.invalidLogin = true;
             this.errorMessage = 'Invalid Credentials !!';

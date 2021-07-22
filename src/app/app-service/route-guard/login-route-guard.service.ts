@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SimpleAuthenticationService } from '../authentication/simple-authentication.service';
 
 @Injectable({
@@ -7,24 +8,22 @@ import { SimpleAuthenticationService } from '../authentication/simple-authentica
 })
 export class LoginRouteGuardService {
 
-  fullName = '';
-  loginStatus = false;
+  fullName = new BehaviorSubject<string>(null);
+  loginStatus = new BehaviorSubject<boolean>(false);
 
   constructor(
     private simpleAuthenticationService: SimpleAuthenticationService,
     private router: Router
   ) {
-    this.simpleAuthenticationService.getAuthFullname().subscribe((response) => {
-      this.fullName = response;
-    });
     this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
-      this.loginStatus = state.loggedInStatus;
+      this.fullName.next(state.fullName);
+      this.loginStatus.next(state.loggedInStatus);
     });
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.loginStatus == true) {
-      this.router.navigate(['homepage', this.fullName]);
+    if (this.loginStatus.getValue() == true) {
+      this.router.navigate(['homepage', this.fullName.getValue()]);
       return false;
     }
     return true;

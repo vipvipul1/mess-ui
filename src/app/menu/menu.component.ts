@@ -9,7 +9,7 @@ import { SimpleAuthenticationService } from '../app-service/authentication/simpl
 })
 export class MenuComponent implements OnInit, AfterContentChecked{
 
-  fullName = '';
+  fullName = new BehaviorSubject<string>(null);
   loginStatus = new BehaviorSubject<boolean>(null);
 
   constructor(
@@ -19,13 +19,12 @@ export class MenuComponent implements OnInit, AfterContentChecked{
   ngOnInit() {
     this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
       this.loginStatus.next(state.loggedInStatus);
-      console.log(this.loginStatus.getValue());
     });
   }
 
   ngAfterContentChecked(): void {
-    this.simpleAuthenticationService.getAuthFullname().subscribe((response) => {
-      this.fullName = response;
+    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+      this.fullName.next(state.fullName);
     });
   }
 
