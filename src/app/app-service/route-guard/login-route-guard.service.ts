@@ -7,15 +7,24 @@ import { SimpleAuthenticationService } from '../authentication/simple-authentica
 })
 export class LoginRouteGuardService {
 
+  fullName = '';
+  loginStatus = false;
+
   constructor(
     private simpleAuthenticationService: SimpleAuthenticationService,
     private router: Router
-  ) { }
+  ) {
+    this.simpleAuthenticationService.getAuthFullname().subscribe((response) => {
+      this.fullName = response;
+    });
+    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+      this.loginStatus = state.loggedInStatus;
+    });
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const loginStatus = this.simpleAuthenticationService.isUserLoggedIn();
-    if (loginStatus == true) {
-      this.router.navigate(['homepage', this.simpleAuthenticationService.getAuthenticatedFullname()]);
+    if (this.loginStatus == true) {
+      this.router.navigate(['homepage', this.fullName]);
       return false;
     }
     return true;

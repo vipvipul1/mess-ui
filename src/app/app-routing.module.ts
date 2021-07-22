@@ -7,6 +7,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AddDepositComponent } from './mess-deposit/add-deposit/add-deposit.component';
+import { MessDepositComponent } from './mess-deposit/mess-deposit.component';
+import { ViewDepositComponent } from './mess-deposit/view-deposit/view-deposit.component';
 import { RegisterComponent } from './register/register.component';
 
 
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'messExpense', component: ManageUsersComponent, canActivate: [RouteGuardService]},
   {path: 'monthlyMeal', component: ManageUsersComponent, canActivate: [RouteGuardService]},
   {path: 'editMeal', component: ManageUsersComponent, canActivate: [RouteGuardService]},
-  {path: 'messDeposit', component: ManageUsersComponent, canActivate: [RouteGuardService]},
+  {path: 'messDeposit', component: MessDepositComponent, canActivate: [RouteGuardService], children: [
+    {path: 'addDeposit', component: AddDepositComponent, canActivate:[RouteGuardService]},
+    {path: 'viewDeposit', component: ViewDepositComponent, canActivate:[RouteGuardService]}
+  ]},
   {path: 'messReport', component: ManageUsersComponent, canActivate: [RouteGuardService]},
   {path: 'manageUsers', component: ManageUsersComponent, canActivate: [RouteGuardService]},
 

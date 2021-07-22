@@ -13,6 +13,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { MessDepositComponent } from './mess-deposit/mess-deposit.component';
+import { AddDepositComponent } from './mess-deposit/add-deposit/add-deposit.component';
+import { ViewDepositComponent } from './mess-deposit/view-deposit/view-deposit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     HomepageComponent,
     LogoutComponent,
     RegisterComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    MessDepositComponent,
+    AddDepositComponent,
+    ViewDepositComponent
   ],
   imports: [
     BrowserModule,

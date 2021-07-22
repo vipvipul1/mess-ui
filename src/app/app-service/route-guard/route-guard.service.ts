@@ -7,14 +7,19 @@ import { SimpleAuthenticationService } from '../authentication/simple-authentica
 })
 export class RouteGuardService {
 
+  loginStatus = false;
+
   constructor(
     private simpleAuthenticationService: SimpleAuthenticationService,
     private router: Router
-  ) { }
+  ) {
+    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+      this.loginStatus = state.loggedInStatus;
+    });
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const loginStatus = this.simpleAuthenticationService.isUserLoggedIn();
-    if (loginStatus == false) {
+    if (this.loginStatus == false) {
       this.router.navigate(['login']);
       return false;
     }

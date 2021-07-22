@@ -4,7 +4,7 @@
       <a [routerLink]="['/homepage', fullName != null ? fullName : '']" class="navbar-brand">Tapan Da Mess</a>
     </div>
 
-    <ul class="navbar-nav" *ngIf="simpleAuthenticationService.isUserLoggedIn()">
+    <ul class="navbar-nav" *ngIf="loginStatus | async">
       <li class="nav-item px-1" routerLinkActive="active">
 		 	  <a [routerLink]="['/homepage', fullName]" class="nav-link">Home</a>
 		  </li>
@@ -17,8 +17,12 @@
       <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/editMeal" class="nav-link">Edit Meals</a>
       </li>
-      <li class="nav-item px-1" routerLinkActive="active">
-        <a routerLink="/messDeposit" class="nav-link">Mess Deposit</a>
+      <li class="nav-item dropdown px-1" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" routerLink="/messDeposit" data-bs-toggle="dropdown" >Mess Deposit</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="messDeposit/addDeposit">Add Deposit</a></li>
+          <li><a class="dropdown-item" routerLink="messDeposit/viewDeposit">View Deposit</a></li>
+        </ul>
       </li>
       <li class="nav-item px-1" routerLinkActive="active">
         <a routerLink="/messReport" class="nav-link">Mess Report</a>
@@ -28,7 +32,7 @@
       </li>
     </ul>
 
-    <ul *ngIf="simpleAuthenticationService.isUserLoggedIn()" class="navbar-nav navbar-collapse justify-content-end">
+    <ul *ngIf="loginStatus | async" class="navbar-nav navbar-collapse justify-content-end">
       <li class="nav-item" routerLinkActive="active">
 			  <a routerLink="/profile" class="nav-link">Profile</a>
 		  </li>

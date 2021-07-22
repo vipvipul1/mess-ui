@@ -1,0 +1,13 @@
+.tableFixHead {
+  overflow: auto;
+  height: 522px;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+table {
+  width: 100%;
+}

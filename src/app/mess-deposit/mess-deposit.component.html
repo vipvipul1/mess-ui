@@ -1,0 +1,15 @@
+<div class="container pt-5">
+  <div *ngIf="isParentActive">
+    <div class="col-md-5 row">
+      <span class="col-md-4">Select Action:</span>
+      <span class="col-md-4">
+        <button class="btn btn-primary" routerLink="addDeposit">Add Deposit</button>
+      </span>
+      <span class="col-md-4">
+        <button class="btn btn-primary" routerLink="viewDeposit">View Deposit</button>
+      </span>
+    </div>
+  </div>
+  <app-view-deposit *ngIf="isParentActive" [month]="7" [year]="2021"></app-view-deposit>
+  <router-outlet></router-outlet>
+</div>

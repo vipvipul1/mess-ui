@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SimpleAuthenticationService } from '../app-service/authentication/simple-authentication.service';
 
 @Component({
@@ -9,16 +10,23 @@ import { SimpleAuthenticationService } from '../app-service/authentication/simpl
 export class MenuComponent implements OnInit, AfterContentChecked{
 
   fullName = '';
+  loginStatus = new BehaviorSubject<boolean>(null);
 
   constructor(
     public simpleAuthenticationService: SimpleAuthenticationService
   ) { }
 
-  ngAfterContentChecked(): void {
-    this.fullName = this.simpleAuthenticationService.getAuthenticatedFullname();
+  ngOnInit() {
+    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+      this.loginStatus.next(state.loggedInStatus);
+      console.log(this.loginStatus.getValue());
+    });
   }
 
-  ngOnInit() {
+  ngAfterContentChecked(): void {
+    this.simpleAuthenticationService.getAuthFullname().subscribe((response) => {
+      this.fullName = response;
+    });
   }
 
 }

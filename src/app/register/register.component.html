@@ -65,10 +65,10 @@
                   </div>
                   <div class="form-input col-md-6" style="top: 12px; left: 3px;">
                     <a (click)="user.isVeg=true">
-                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="true" /> Veg
+                      <input type="radio" name="veg" [(ngModel)]="user.isVeg" [value]="true" [checked]="user.isVeg"/> Veg
                     </a> &nbsp;&nbsp;&nbsp;
                     <a (click)="user.isVeg=false">
-                      <input type="radio" name="veg" name="isVeg" [(ngModel)]="user.isVeg" [value]="false" /> Non-veg
+                      <input type="radio" name="veg" [(ngModel)]="user.isVeg" [value]="false" [checked]="user.isVeg"/> Non-veg
                     </a>
                   </div>
               </div>

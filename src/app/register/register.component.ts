@@ -27,6 +27,10 @@ export class RegisterComponent implements OnInit {
   }
 
   validateRegDetails(userDetail, field) {
+    if (userDetail == '') {
+      this.assignDynamicFieldErr(field, '');
+      return;
+    }
     this.userRegister.validateRegDetails(userDetail).subscribe(
       (res) => {
         this.errorMsg = '';
