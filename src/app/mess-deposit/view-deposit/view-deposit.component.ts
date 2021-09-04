@@ -9,8 +9,8 @@ import { MessDepositService } from 'src/app/app-service/deposit/mess-deposit.ser
 })
 export class ViewDepositComponent implements OnInit {
 
-  @Input('month') month: number;
-  @Input('year') year: number;
+  @Input('month') month: number = new Date().getMonth() + 1;
+  @Input('year') year: number = new Date().getFullYear();
   depositRecords: any;
   username: string;
 

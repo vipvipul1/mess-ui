@@ -9,6 +9,8 @@ import { ActivatedRoute, Event, NavigationEnd, Router } from '@angular/router';
 })
 export class MessDepositComponent implements OnInit, DoCheck {
 
+  curMonth = new Date().getMonth() + 1;
+  curYear = new Date().getFullYear();
   isParentActive = false;
 
   constructor(

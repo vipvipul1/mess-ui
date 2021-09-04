@@ -7,3 +7,11 @@ nav {
   font-weight: 600;
   font-size: 1rem;
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item:click ~ li{
+  background-color: red;
+}
