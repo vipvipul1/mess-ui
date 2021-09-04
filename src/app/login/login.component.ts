@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../app-model/user.model';
-import { SimpleAuthenticationService } from '../app-service/authentication/simple-authentication.service';
+import { SimpleAuthService } from '../app-service/authentication/simple-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
 
   constructor(
-    private simpleAuthenticationService: SimpleAuthenticationService,
+    private simpleAuthService: SimpleAuthService,
     private router: Router
   ) { }
 
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    this.simpleAuthenticationService.checkAuthCredentials(this.username, this.password)
+    this.simpleAuthService.checkAuthCredentials(this.username, this.password)
       .subscribe(
         (data: User) => {
           if (data != null) {

@@ -1,6 +1,6 @@
 import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SimpleAuthenticationService } from '../app-service/authentication/simple-authentication.service';
+import { SimpleAuthService } from '../app-service/authentication/simple-auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,17 +13,17 @@ export class MenuComponent implements OnInit, AfterContentChecked{
   loginStatus = new BehaviorSubject<boolean>(null);
 
   constructor(
-    public simpleAuthenticationService: SimpleAuthenticationService
+    public simpleAuthService: SimpleAuthService
   ) { }
 
   ngOnInit() {
-    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+    this.simpleAuthService.globalStateChanged.subscribe((state) => {
       this.loginStatus.next(state.loggedInStatus);
     });
   }
 
   ngAfterContentChecked(): void {
-    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+    this.simpleAuthService.globalStateChanged.subscribe((state) => {
       this.fullName.next(state.fullName);
     });
   }

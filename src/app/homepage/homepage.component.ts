@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SimpleAuthenticationService } from '../app-service/authentication/simple-authentication.service';
 
 @Component({
   selector: 'app-homepage',

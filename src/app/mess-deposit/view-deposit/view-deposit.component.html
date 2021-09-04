@@ -7,24 +7,24 @@
           <th>Name</th>
           <th>Total Deposit</th>
           <th>Received By</th>
-          <th>Payemnt By</th>
+          <th>Payment By</th>
           <th>Payment Mode</th>
-          <th>Payment Date</th>
+          <th>Deposit Date</th>
           <th>Outstanding</th>
           <th>Comments</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor="let dep of depositRecords; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ dep.fullName }}</td>
+          <td>{{ dep.amount  }}</td>
+          <td>{{ dep.receivedByFullName }}</td>
+          <td>{{ dep.paymentByFullName }}</td>
+          <td>{{ dep.paymentMode }}</td>
+          <td>{{ dep.depositDate | date: "dd-MM-YYYY"}}</td>
+          <td>{{ dep.outstanding }}</td>
+          <td>{{ dep.comments }}</td>
         </tr>
       </tbody>
     </table>

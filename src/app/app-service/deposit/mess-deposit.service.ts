@@ -11,7 +11,7 @@ export class MessDepositService {
     private http: HttpClient
   ) { }
 
-  getMessDeposits(userId, month, year) {
-    return this.http.get(`${API_URL}/mess/viewDeposits/${userId}/${month}/${year}`);
+  getMessDeposits(username, month, year) {
+    return this.http.get(`${API_URL}/mess/deposit/viewDeposit/${username}/${month}/${year}`);
   }
 }

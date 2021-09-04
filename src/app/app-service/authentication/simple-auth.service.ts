@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SimpleAuthenticationService extends ObservableStore<StoreState> {
+export class SimpleAuthService extends ObservableStore<StoreState> {
 
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
   private username = sessionStorage.getItem('username');

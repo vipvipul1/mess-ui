@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { SimpleAuthenticationService } from '../authentication/simple-authentication.service';
+import { SimpleAuthService } from '../authentication/simple-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ export class RouteGuardService {
   loginStatus = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private simpleAuthenticationService: SimpleAuthenticationService,
+    private simpleAuthService: SimpleAuthService,
     private router: Router
   ) {
-    this.simpleAuthenticationService.globalStateChanged.subscribe((state) => {
+    this.simpleAuthService.globalStateChanged.subscribe((state) => {
       this.loginStatus.next(state.loggedInStatus);
     });
   }
